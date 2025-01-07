@@ -1,0 +1,17 @@
+Wall Bottom : -
+Wall Top : =
+Wall Left : |
+Wall Right : /
+Wall Angle BL : &
+Wall Angle BR : +
+Wall Angle TL : :
+Wall Angle BL : #
+
+Wall Angle LTB : (
+Wall Angle RTB : )
+Wall Angle TTL : {
+Wall Angle TTR : }
+
+PacGum : .
+Ghost : G
+PacMan : C
