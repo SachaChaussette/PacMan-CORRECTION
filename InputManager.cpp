@@ -5,32 +5,30 @@ void InputManager::CloseWindow(RenderWindow& _window)
     _window.close();
 }
 
-void InputManager::BindAction(Code _code, function<void()> _callback)
+void InputManager::BindAction( function<void()> _callback , const Code& _code )
 {
-    callbacks.insert({ _code, _callback });
+    inputsData.push_back(InputData(_callback, { _code }));
+}
+
+void InputManager::BindAction( function<void()> _callback, const vector<Code>& _codes )
+{
+    inputsData.push_back(InputData(_callback, _codes, _codes.empty()));
 }
 
 void InputManager::ConsumeInputs(RenderWindow& _window)
 {
-    while (const std::optional _event = _window.pollEvent())
+    while (const optional _event = _window.pollEvent())
     {
         if (_event->is<Event::Closed>())
         {
             CloseWindow(_window);
         }
-        else if (const Event::KeyPressed* _key = _event->getIf<Event::KeyPressed>())
+        else if (const Event::KeyPressed* _key = _event->getIf<KeyPressed>())
         {
-            if (_key->code == Code::Escape)
+            for (const InputData& _inputData : inputsData)
             {
-                CloseWindow(_window);
-            }
-
-            if (callbacks.contains(_key->code))
-            {
-                callbacks[_key->code]();
+                if(_inputData.TryToExecute(_key)) break;
             }
         }
-
-
     }
 }

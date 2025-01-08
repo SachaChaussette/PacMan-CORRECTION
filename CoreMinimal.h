@@ -13,3 +13,5 @@ using namespace std;
 using namespace sf;
 
 typedef unsigned int u_int;
+
+#define SLEEP(_duration) sleep(Time(_duration));

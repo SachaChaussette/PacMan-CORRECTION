@@ -1,7 +1,9 @@
 #include "PacMan.h"
 #include "InputManager.h"
+#include "ColliderComponent.h"
 
-PacMan::PacMan(const string& _path, const Vector2f& _shapeSize) : Entity(_path, _shapeSize)
+PacMan::PacMan(Level* _level, const Vector2f& _shapeSize)
+				: Entity(_level, "Pacman/Moving/PacMan_Moving", _shapeSize, CT_NONE)
 {
 	movement = new MovementComponent(this);
 	life = new LifeComponent(this);
@@ -15,12 +17,22 @@ PacMan::~PacMan()
 	delete life;
 }
 
-void PacMan::SetupInputs() 
+void PacMan::SetupInputs()
 {
 	InputManager& _manager = InputManager::GetInstance();
-	
-	_manager.BindAction(Code::Z, [&]() { movement->Move(Vector2i(0, -1)); });
-	_manager.BindAction(Code::S, [&]() { movement->Move(Vector2i(0, 1)); });
-	_manager.BindAction(Code::Q, [&]() { movement->Move(Vector2i(-1, 0)); });
-	_manager.BindAction(Code::D, [&]() { movement->Move(Vector2i(1, 0)); });
+	_manager.BindAction( [&]() { movement->ToggleMoveStatus(); }, Code::Space);
+	_manager.BindAction( [&]() { 
+		movement->SetDirection(Vector2i(0, -1)); }, { Code::Z, Code::Up });
+	_manager.BindAction( [&]() { movement->SetDirection(Vector2i(0, 1)); } , { Code::S, Code::Down });
+	_manager.BindAction( [&]() { movement->SetDirection(Vector2i(-1, 0)); }, { Code::Q, Code::Left });
+	_manager.BindAction( [&]() { movement->SetDirection(Vector2i(1, 0)); }, { Code::D, Code::Right });
 }
+
+void PacMan::Update()
+{
+	movement->Update();
+	life->Update();
+}
+
+// Systeme d'animation de pacman setTextureRect
+// Game

@@ -1,16 +1,29 @@
 #pragma once
 
-#include "CoreMinimal.h"
+#include "Object.h"
+#include "Level.h"
 
-class Entity
+enum ColliderType;
+class ColliderComponent;
+
+class Level;
+
+class Entity : public Object
 {
 	Vector2f shapeSize;
-	RectangleShape* shape;
 	Texture texture;
-	Vector2i coords;
+
+	ColliderComponent* collider;
+protected:
+	RectangleShape* shape;
+	Level* level;
 
 public:
-	inline void SetPosition(const Vector2i& _coords)
+	inline Level* GetLevel() const
+	{
+		return level;
+	}
+	inline void SetPosition(const Vector2f& _coords)
 	{
 		const float _x = _coords.x;
 		const float _y = _coords.y;
@@ -24,10 +37,21 @@ public:
 	{
 		return shape;
 	}
-
+	inline Vector2f GetPosition() const
+	{
+		return shape->getPosition();
+	}
+	inline ColliderComponent* GetCollider() const
+	{
+		return collider;
+	}
 public:
-	Entity(const string& _name, const Vector2f& _shapeSize);
-
+	Entity(Level* _level, const string& _name, const Vector2f& _shapeSize, 
+			const ColliderType& _colliderType, const function<void(Entity* _entity)>& _callback = {});
+	~Entity();
+public:
+	virtual void Update() override;
+	void AddPoints(const int _points);
 private:
 };
 

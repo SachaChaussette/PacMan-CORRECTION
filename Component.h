@@ -1,7 +1,8 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Entity.h"
+
+class Entity;
 
 class Component
 {
@@ -16,5 +17,8 @@ public:
 
 public:
 	Component(Entity* _owner);
+
+public:
+	virtual void Update();
 };
 

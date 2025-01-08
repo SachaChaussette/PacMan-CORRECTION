@@ -1,17 +1,25 @@
 #include "Level.h"
 #include "FileLoader.h"
 #include "PacMan.h"
+#include "ColliderComponent.h"
+#include "Food.h"
 
-Level::Level(const string& _name)
+Level::Level(const string& _name, RenderWindow& _window)
 {
     name = _name;
     prefixPath = "Assets/Maps/";
+    window = &_window;
+
     Generate();
 
 }
 
 Level::~Level()
 {
+    while (!entities.empty())
+    {
+        entities.pop_back();
+    }
 }
 
 void Level::Generate()
@@ -33,7 +41,7 @@ void Level::Generate()
                 _rowIndex++;
                 continue;
             }
-
+            
             SpawnEntity(_symbol, _shapeSize, Vector2i(_colIndex, _rowIndex));
             _colIndex++;
         }
@@ -50,7 +58,7 @@ void Level::PlaceEntity(const Vector2i& _coords, const Vector2f& _shapeSize, Ent
 {
     const float _x = _coords.x * _shapeSize.x;
     const float _y = _coords.y * _shapeSize.y;
-    _entity->SetPosition(Vector2i(_x, _y));
+    _entity->SetPosition(Vector2f(_x, _y) + _shapeSize / 2.0f);
 }
 
 void Level::SpawnEntity(const char _symbol, const Vector2f& _shapeSize, const Vector2i& _coords)
@@ -59,41 +67,67 @@ void Level::SpawnEntity(const char _symbol, const Vector2f& _shapeSize, const Ve
     {
         {'#', [&]()
             {
-                return new Entity("Walls/Wall", _shapeSize);
+                return new Entity(this, "Walls/Wall", _shapeSize, CT_BLOCK);
             }
         },
         {'.', [&]()
             {
-                return new Entity("Foods/Point", _shapeSize);
+                return new Food(this, "Foods/Point", _shapeSize, 10,FT_EATABLE );
             }
         },
         {'*', [&]()
             {
-                return new Entity("Foods/Apple", _shapeSize);
+                return new Food(this, "Foods/Apple", _shapeSize, 700, FT_APPLE);
             }
         },
         {'C', [&]()
             {
-                return new PacMan("PacMan/Moving/PacMan_Eating_1", _shapeSize);
+                pacMan = new PacMan(this,  _shapeSize);
+                return pacMan;
             }
         },
         {'G', [&]()
             {
-                return new Entity("Ghosts/Blue/BlueGhost_Vulnerable", _shapeSize);
+                return new Food(this, "Ghosts/Blue/BlueGhost_Vulnerable", _shapeSize, 1000, FT_GHOST);
             }
         },
     };
-
+    
     Entity* _entity = _textureDataBase[_symbol]();
+
     PlaceEntity(_coords, _shapeSize, _entity);
     entities.push_back(_entity);
 }
 
-
-void Level::Display(RenderWindow& _window) const
+void Level::Display() const
 {
     for (const Entity* _entity : entities)
     {
-        _window.draw(*_entity->GetShape());
+        window->draw(*_entity->GetShape());
     }
+    window->draw(*pacMan->GetShape());
+}
+
+void Level::Update()
+{
+    for (Entity* _entity : entities)
+    {
+        _entity->Update();
+    }
+    Display();
+}
+
+void Level::AddScore(const int _points)
+{
+    points += _points;
+}
+
+#include <set>
+Entity* Level::CheckCollider(const Vector2f& _tagetPosition)
+{
+    for (Entity* _entity : entities)
+    {
+        if (_entity->GetPosition() == _tagetPosition) return _entity;
+    }
+    return nullptr;
 }
