@@ -8,5 +8,5 @@ MovementComponent::MovementComponent(Entity* _owner) : Component(_owner)
 
 void MovementComponent::Move(const Vector2i& _direction)
 {
-	owner->GetShape().move(Vector2f(_direction * speed));
+	owner->GetShape()->move(Vector2f(_direction * speed));
 }

@@ -94,6 +94,6 @@ void Level::Display(RenderWindow& _window) const
 {
     for (const Entity* _entity : entities)
     {
-        _window.draw(_entity->GetShape());
+        _window.draw(*_entity->GetShape());
     }
 }

@@ -21,22 +21,6 @@ void PacMan::SetupInputs()
 	
 	_manager.BindAction(Code::Z, [&]() { movement->Move(Vector2i(0, -1)); });
 	_manager.BindAction(Code::S, [&]() { movement->Move(Vector2i(0, 1)); });
-	_manager.BindAction(Code::Q, [&]() { movement->Move(Vector2i(1, 0)); });
-	_manager.BindAction(Code::D, [&]() { movement->Move(Vector2i(-1, 0)); });
-}
-
-void PacMan::MoveUp()
-{
-}
-
-void PacMan::MoveDown()
-{
-}
-
-void PacMan::MoveLeft()
-{
-}
-
-void PacMan::MoveRight()
-{
+	_manager.BindAction(Code::Q, [&]() { movement->Move(Vector2i(-1, 0)); });
+	_manager.BindAction(Code::D, [&]() { movement->Move(Vector2i(1, 0)); });
 }

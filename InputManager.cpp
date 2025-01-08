@@ -1,7 +1,5 @@
 #include "InputManager.h"
 
-
-
 void InputManager::CloseWindow(RenderWindow& _window)
 {
     _window.close();
@@ -22,14 +20,14 @@ void InputManager::ConsumeInputs(RenderWindow& _window)
         }
         else if (const Event::KeyPressed* _key = _event->getIf<Event::KeyPressed>())
         {
-            if (_key->scancode == Code::Escape)
+            if (_key->code == Code::Escape)
             {
                 CloseWindow(_window);
             }
 
-            if (callbacks.contains(_key->scancode))
+            if (callbacks.contains(_key->code))
             {
-                callbacks[_key->scancode]();
+                callbacks[_key->code]();
             }
         }
 
