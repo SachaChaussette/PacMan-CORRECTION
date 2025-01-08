@@ -21,8 +21,7 @@ void PacMan::SetupInputs()
 {
 	InputManager& _manager = InputManager::GetInstance();
 	_manager.BindAction( [&]() { movement->ToggleMoveStatus(); }, Code::Space);
-	_manager.BindAction( [&]() { 
-		movement->SetDirection(Vector2i(0, -1)); }, { Code::Z, Code::Up });
+	_manager.BindAction( [&]() { movement->SetDirection(Vector2i(0, -1)); }, { Code::Z, Code::Up });
 	_manager.BindAction( [&]() { movement->SetDirection(Vector2i(0, 1)); } , { Code::S, Code::Down });
 	_manager.BindAction( [&]() { movement->SetDirection(Vector2i(-1, 0)); }, { Code::Q, Code::Left });
 	_manager.BindAction( [&]() { movement->SetDirection(Vector2i(1, 0)); }, { Code::D, Code::Right });
@@ -30,6 +29,7 @@ void PacMan::SetupInputs()
 
 void PacMan::Update()
 {
+	UpdateTileIndex(3,1);
 	movement->Update();
 	life->Update();
 }

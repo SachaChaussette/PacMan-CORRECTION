@@ -1,29 +1,15 @@
-﻿#include "Level.h"
-#include "InputManager.h"
-
-#define MAP_SIZE_X 28
-#define MAP_SIZE_Y 28
-#define TILE_SIZE 20
+﻿#include "Game.h"
 
 int main()
 {
     #pragma warning (push)
     #pragma warning (disable 4275)
 
-    ContextSettings _settings;
-    _settings.antiAliasingLevel = 8;
-    RenderWindow _window(VideoMode(Vector2u(MAP_SIZE_X * TILE_SIZE, MAP_SIZE_Y * TILE_SIZE)), "Pac Man", State::Windowed, _settings);
-    Level _level = Level("SmallMap", _window);  
+    Game::GetInstance().SetWindow(Vector2u(MAP_SIZE_X, MAP_SIZE_Y),Vector2u(TILE_SIZE_X, TILE_SIZE_Y),"Pac Man");
 
-    while (_window.isOpen())
-    {
-        InputManager::GetInstance().ConsumeInputs(_window);
+    Game::GetInstance().LoadLevel("SmallMap");
 
-        _window.clear();
-        _level.Update();
-        _window.display();
-        SLEEP(500ms);
-    }
+    Game::GetInstance().Loop();
 
     #pragma warning (pop)
 
@@ -33,28 +19,17 @@ int main()
 
 /*
 
-	1- Lecture fichier .txt          ✅
+    1- Lecture fichier .txt          ✅
     2- Génération Entité             ✅
     3- Boucle affichage entité       ✅
 
     1- Déplacement du PacMan         ✅
-    2- Supprimer les Pastilles
-    3- Ajouter du score
-    4- Collision avec les murs
+    2- Supprimer les Pastilles       ✅
+    3- Ajouter du score              ✅
+    4- Collision avec les murs       ✅
 
+    1- Réparer les Mouvements        ✅
+    2- Animation de PacMan           ✅
+    3- Game                          ✅
 
-    
-
-
-*/
-
-/*
-*      TODO LIST
-*
-*   
-*
-*
-* 
-*
-*
 */

@@ -14,6 +14,7 @@ class Entity : public Object
 	Texture texture;
 
 	ColliderComponent* collider;
+	u_int tileIndex;
 protected:
 	RectangleShape* shape;
 	Level* level;
@@ -52,6 +53,8 @@ public:
 public:
 	virtual void Update() override;
 	void AddPoints(const int _points);
+	void UpdateTileIndex(const u_int& _maxTile, const u_int& _timeToWait);
 private:
+	void UpdateShape() const;
 };
 

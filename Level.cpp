@@ -82,8 +82,7 @@ void Level::SpawnEntity(const char _symbol, const Vector2f& _shapeSize, const Ve
         },
         {'C', [&]()
             {
-                pacMan = new PacMan(this,  _shapeSize);
-                return pacMan;
+                return new PacMan(this,  _shapeSize);
             }
         },
         {'G', [&]()
@@ -94,7 +93,6 @@ void Level::SpawnEntity(const char _symbol, const Vector2f& _shapeSize, const Ve
     };
     
     Entity* _entity = _textureDataBase[_symbol]();
-
     PlaceEntity(_coords, _shapeSize, _entity);
     entities.push_back(_entity);
 }
@@ -105,7 +103,6 @@ void Level::Display() const
     {
         window->draw(*_entity->GetShape());
     }
-    window->draw(*pacMan->GetShape());
 }
 
 void Level::Update()

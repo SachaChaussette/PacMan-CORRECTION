@@ -14,9 +14,6 @@ class Level
 	RenderWindow* window;
 	int points;
 
-	PacMan* pacMan;
-
-
 public:
 	inline Vector2u GetMapSize() const
 	{
