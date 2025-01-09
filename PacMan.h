@@ -2,18 +2,28 @@
 
 #include "CoreMinimal.h"
 #include "Entity.h"
-#include "MovementComponent.h"
+#include "PlayerMovementComponent.h"
 #include "LifeComponent.h"
+#include "AnimationComponent.h"
 
 class PacMan : public Entity
 {
-	MovementComponent* movement;
+	PlayerMovementComponent* movement;
 	LifeComponent* life;
+	AnimationComponent* animation;
 
 public :
-	inline MovementComponent* GetMovementComponent()
+	inline PlayerMovementComponent* GetMovementComponent()
 	{
 		return movement;
+	}
+	inline AnimationComponent* GetAnimationComponent()
+	{
+		return animation;
+	}
+	inline LifeComponent* GetLifeComponent()
+	{
+		return life;
 	}
 
 public:
@@ -24,5 +34,6 @@ private:
 	void SetupInputs();
 public:
 	virtual void Update() override;
+	void Death();
 };
 

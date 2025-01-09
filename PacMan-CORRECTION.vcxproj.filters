@@ -13,54 +13,144 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Entities">
+      <UniqueIdentifier>{75f7a954-ccab-41d8-8825-66c96610c50a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components">
+      <UniqueIdentifier>{e1f1848a-10a9-416d-81fd-db7b41bfb30e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level">
+      <UniqueIdentifier>{8340f1cd-61ca-4afc-b59d-e6e353abbebb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CoreMinimal">
+      <UniqueIdentifier>{28505f18-e91d-4055-b3d3-d7010ed11eb0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Macro">
+      <UniqueIdentifier>{611eae29-fc26-4c31-9c70-a00e44f81a84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Singleton">
+      <UniqueIdentifier>{41cb396c-403a-48cb-b387-567771204628}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{9235b6d6-ed8d-497c-a950-59e87a3b9994}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FileLoader">
+      <UniqueIdentifier>{bb84977b-82f6-4cdb-9125-a0154615f41f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager">
+      <UniqueIdentifier>{9df40aed-6733-4b2d-9818-164e7a4af201}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\InputManager">
+      <UniqueIdentifier>{dba646ea-e1f3-4de6-ac95-58df2d9b03b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\TextureManager">
+      <UniqueIdentifier>{05450641-2230-4f07-94aa-472d9513a175}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main">
+      <UniqueIdentifier>{df0fb388-37d7-4ac2-bfa3-a1ed97df8b80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entities\Entity">
+      <UniqueIdentifier>{9f8372f9-6b10-49e4-a9e5-fe018d5e9d11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entities\Object">
+      <UniqueIdentifier>{e4f22acb-2ca4-4e95-979c-6e223f1bed88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entities\Food">
+      <UniqueIdentifier>{19519d94-8b64-49d5-8458-49a3fe518335}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entities\Ghost">
+      <UniqueIdentifier>{cf37f0f9-0207-464e-96aa-c616c6cbe31d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entities\PacMan">
+      <UniqueIdentifier>{5168c8c7-ff51-44bc-8acf-c00de2e36749}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Collider">
+      <UniqueIdentifier>{3872872d-cb71-4d21-83ac-1a6502a640d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Component">
+      <UniqueIdentifier>{41db54ad-a9c9-4910-8c35-42a3d7c2cdbc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Life">
+      <UniqueIdentifier>{d42739dc-4c90-4a72-a5b5-b99d0b81ea23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Movement">
+      <UniqueIdentifier>{2aac7837-b011-40c1-94f2-5a2a697f03a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Movement\Astar">
+      <UniqueIdentifier>{5215f8a4-8297-443a-b59f-33f4e93440c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Movement\Astar\Node">
+      <UniqueIdentifier>{cd048c9f-3de0-43ee-8e4b-5bac3dfc1512}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Movement\GhostMovement">
+      <UniqueIdentifier>{77c5c6c6-24ea-4795-b79c-30a074207e4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Movement\PlayerMovement">
+      <UniqueIdentifier>{8301a82a-bb0f-4182-83fa-feb179d87d7a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="CoreMinimal.h">
+      <Filter>CoreMinimal</Filter>
     </ClCompile>
-    <ClCompile Include="Singleton.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="AstarAlgo.cpp">
+      <Filter>Components\Movement\Astar</Filter>
     </ClCompile>
     <ClCompile Include="FileLoader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Level.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Entity.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TextureManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PacMan.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MovementComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Component.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="LifeComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="InputManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CoreMinimal.h">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ColliderComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Object.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Food.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>FileLoader</Filter>
     </ClCompile>
     <ClCompile Include="Game.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Manager\InputManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Level.cpp">
+      <Filter>Level</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Singleton.cpp">
+      <Filter>Singleton</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureManager.cpp">
+      <Filter>Manager\TextureManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>Entities\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="Food.cpp">
+      <Filter>Entities\Food</Filter>
+    </ClCompile>
+    <ClCompile Include="Ghost.cpp">
+      <Filter>Entities\Ghost</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>Entities\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="PacMan.cpp">
+      <Filter>Entities\PacMan</Filter>
+    </ClCompile>
+    <ClCompile Include="ColliderComponent.cpp">
+      <Filter>Components\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="Component.cpp">
+      <Filter>Components\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="LifeComponent.cpp">
+      <Filter>Components\Life</Filter>
+    </ClCompile>
+    <ClCompile Include="MovementComponent.cpp">
+      <Filter>Components\Movement</Filter>
+    </ClCompile>
+    <ClCompile Include="GhostMovementComponent.cpp">
+      <Filter>Components\Movement\GhostMovement</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerMovementComponent.cpp">
+      <Filter>Components\Movement\PlayerMovement</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimationComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -68,49 +158,67 @@
     <Text Include="Assets\Textures\Walls\code.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Singleton.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Macro.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="AstarAlgo.h">
+      <Filter>Components\Movement\Astar</Filter>
     </ClInclude>
     <ClInclude Include="Level.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Entity.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TextureManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PacMan.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MovementComponent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Component.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="InputManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="FileLoader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="LifeComponent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ColliderComponent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Object.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Food.h">
-      <Filter>Header Files</Filter>
+      <Filter>Level</Filter>
     </ClInclude>
     <ClInclude Include="Game.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Macro.h">
+      <Filter>Macro</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureManager.h">
+      <Filter>Manager\TextureManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleton.h">
+      <Filter>Singleton</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Manager\InputManager</Filter>
+    </ClInclude>
+    <ClInclude Include="FileLoader.h">
+      <Filter>FileLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>Entities\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Food.h">
+      <Filter>Entities\Food</Filter>
+    </ClInclude>
+    <ClInclude Include="Ghost.h">
+      <Filter>Entities\Ghost</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>Entities\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="PacMan.h">
+      <Filter>Entities\PacMan</Filter>
+    </ClInclude>
+    <ClInclude Include="ColliderComponent.h">
+      <Filter>Components\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="Component.h">
+      <Filter>Components\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="LifeComponent.h">
+      <Filter>Components\Life</Filter>
+    </ClInclude>
+    <ClInclude Include="MovementComponent.h">
+      <Filter>Components\Movement</Filter>
+    </ClInclude>
+    <ClInclude Include="Node.h">
+      <Filter>Components\Movement\Astar\Node</Filter>
+    </ClInclude>
+    <ClInclude Include="GhostMovementComponent.h">
+      <Filter>Components\Movement\GhostMovement</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerMovementComponent.h">
+      <Filter>Components\Movement\PlayerMovement</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

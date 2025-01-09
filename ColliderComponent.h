@@ -12,15 +12,19 @@ enum ColliderType
 class ColliderComponent : public Component
 {
 	ColliderType type;
-	function<void(Entity* _entity)> callback;
+	function<bool(Entity* _entity)> callback;
 
 public:
+	inline void SetType(const ColliderType& _type)
+	{
+		type = _type;
+	}
 	inline ColliderType GetType()
 	{
 		return type;
 	}
 public:
-	ColliderComponent(const function<void(Entity* _entity)>& _callback, const ColliderType& _type, Entity* _owner);
+	ColliderComponent(const function<bool(Entity* _entity)>& _callback, const ColliderType& _type, Entity* _owner);
 
 public:
 	bool Collide(Entity* _entity);

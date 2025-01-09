@@ -11,11 +11,12 @@ class Level;
 class Entity : public Object
 {
 	Vector2f shapeSize;
-	Texture texture;
 
-	ColliderComponent* collider;
-	u_int tileIndex;
+
 protected:
+	ColliderComponent* collider;
+	Texture texture;
+	u_int spriteIndex;
 	RectangleShape* shape;
 	Level* level;
 
@@ -48,13 +49,9 @@ public:
 	}
 public:
 	Entity(Level* _level, const string& _name, const Vector2f& _shapeSize, 
-			const ColliderType& _colliderType, const function<void(Entity* _entity)>& _callback = {});
+			const ColliderType& _colliderType, const function<bool(Entity* _entity)>& _callback = {});
 	~Entity();
 public:
 	virtual void Update() override;
-	void AddPoints(const int _points);
-	void UpdateTileIndex(const u_int& _maxTile, const u_int& _timeToWait);
-private:
-	void UpdateShape() const;
 };
 

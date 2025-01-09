@@ -1,4 +1,5 @@
 #include "LifeComponent.h"
+#include "Game.h"
 
 LifeComponent::LifeComponent(Entity* _owner) : Component(_owner)
 {
@@ -8,7 +9,11 @@ LifeComponent::LifeComponent(Entity* _owner) : Component(_owner)
 void LifeComponent::RemoveLife()
 {
 	lifesCount--;
-	lifesCount %= 3;
+
+	if (lifesCount <= 0)
+	{
+		Game::GetInstance().Stop();
+	}
 }
 
 void LifeComponent::ResetLife()

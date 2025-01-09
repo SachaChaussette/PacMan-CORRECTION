@@ -5,11 +5,7 @@ int main()
     #pragma warning (push)
     #pragma warning (disable 4275)
 
-    Game::GetInstance().SetWindow(Vector2u(MAP_SIZE_X, MAP_SIZE_Y),Vector2u(TILE_SIZE_X, TILE_SIZE_Y),"Pac Man");
-
-    Game::GetInstance().LoadLevel("SmallMap");
-
-    Game::GetInstance().Loop();
+    Game::GetInstance().Launch();
 
     #pragma warning (pop)
 

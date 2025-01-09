@@ -139,6 +139,8 @@ xcopy /y /d "..\SFML-3.0.0\bin\sfml-window-d-3.dll" "$(OutDir)"
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AnimationComponent.cpp" />
+    <ClCompile Include="AstarAlgo.cpp" />
     <ClCompile Include="ColliderComponent.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="CoreMinimal.h" />
@@ -146,6 +148,8 @@ xcopy /y /d "..\SFML-3.0.0\bin\sfml-window-d-3.dll" "$(OutDir)"
     <ClCompile Include="FileLoader.cpp" />
     <ClCompile Include="Food.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Ghost.cpp" />
+    <ClCompile Include="GhostMovementComponent.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="LifeComponent.cpp" />
@@ -153,6 +157,7 @@ xcopy /y /d "..\SFML-3.0.0\bin\sfml-window-d-3.dll" "$(OutDir)"
     <ClCompile Include="MovementComponent.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="PacMan.cpp" />
+    <ClCompile Include="PlayerMovementComponent.cpp" />
     <ClCompile Include="Singleton.cpp" />
     <ClCompile Include="TextureManager.cpp" />
   </ItemGroup>
@@ -160,19 +165,25 @@ xcopy /y /d "..\SFML-3.0.0\bin\sfml-window-d-3.dll" "$(OutDir)"
     <Text Include="Assets\Textures\Walls\code.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AnimationComponent.h" />
+    <ClInclude Include="AstarAlgo.h" />
     <ClInclude Include="ColliderComponent.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="FileLoader.h" />
     <ClInclude Include="Food.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Ghost.h" />
+    <ClInclude Include="GhostMovementComponent.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="LifeComponent.h" />
     <ClInclude Include="Macro.h" />
     <ClInclude Include="MovementComponent.h" />
+    <ClInclude Include="Node.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="PacMan.h" />
+    <ClInclude Include="PlayerMovementComponent.h" />
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="TextureManager.h" />
   </ItemGroup>

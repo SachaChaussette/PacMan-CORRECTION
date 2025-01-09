@@ -5,8 +5,11 @@
 #include <vector>
 #include <string>
 #include <map>
+#include <queue>
+#include <set>
 #include <functional>
 #include <SFML/Graphics.hpp>
+#include <math.h>
 #include "Macro.h"
 
 using namespace std;

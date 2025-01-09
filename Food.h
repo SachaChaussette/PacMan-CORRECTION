@@ -21,7 +21,7 @@ class Food : public Entity
 public:
 	Food(Level* _level, const string& _path, const Vector2f& _shapeSize, const int _points, const FoodType& _type);
 
-private:
-	void Eat(Entity* _entity);
+protected:
+	virtual bool Eat(Entity* _entity);
 };
 
