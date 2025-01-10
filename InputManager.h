@@ -22,8 +22,6 @@ struct InputData
 
 	bool TryToExecute(const Event::KeyPressed* _key) const
 	{
-		// Inversion du true et false
-
 		if (!isAnyKey && !ContainsKey(_key->code)) return false;
 
 		callback();

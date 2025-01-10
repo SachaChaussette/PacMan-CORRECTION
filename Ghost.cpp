@@ -10,6 +10,8 @@ Ghost::Ghost(Level* _level, const Vector2f& _shapeSize)
 
 	animation = new AnimationComponent(this, Vector2i(texture.getSize()), Vector2i(4, 1), 1.0f);
 	animation->SetCurrentFrame(Vector2i(1, 0));
+
+	SetupInputs();
 }
 
 Ghost::~Ghost()
@@ -29,6 +31,7 @@ bool Ghost::Eat(Entity* _entity)
 	{
 		if (isVulnerable)
 		{
+			this->SetPosition(Vector2f(0.0f, 0.0f));
 			return __super::Eat(_entity);
 		}
 		else

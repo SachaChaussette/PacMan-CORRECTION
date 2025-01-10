@@ -17,9 +17,9 @@ private:
 public:
 	Node(const Vector2u& _position, const Vector2u& _end, Node* _parent)
 	{
-		position = _position;
+		position = Vector2u(_position.x, _position.y);
 		g = _parent ? _parent->g + 1 : 0;
-		h = Heuristic(_position, _end);
+		h = Heuristic(position, _end);
 		parent = _parent;
 	}
 

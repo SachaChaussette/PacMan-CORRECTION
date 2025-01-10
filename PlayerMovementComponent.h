@@ -19,7 +19,6 @@ public:
 public:
 	PlayerMovementComponent(Entity* _owner);
 private:
-	void Move();
 	void Rotate(const Vector2i& _direction);
 
 public:

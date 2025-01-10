@@ -18,7 +18,7 @@ using namespace sf;
 typedef unsigned int u_int;
 
 #define SLEEP(_duration) sleep(Time(_duration));
-
+#define CAST(_type, _value) static_cast<_type>(_value)
 #define MAP_SIZE_X 28
 #define MAP_SIZE_Y 12
 #define TILE_SIZE_X 20

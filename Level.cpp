@@ -88,8 +88,8 @@ void Level::SpawnEntity(const char _symbol, const Vector2f& _shapeSize, const Ve
         },
         {'C', [&]()
             {
+                playerStart = _position;
                 pacMan = new PacMan(this, _shapeSize);
-                playerStart = pacMan->GetPosition();
                 return pacMan;
             }
         },
@@ -119,7 +119,7 @@ void Level::DeactiveVulnerableEvent()
 {
     for (Ghost* _ghost : ghosts)
     {
-        _ghost->SetVulnerableStatus(true);
+        _ghost->SetVulnerableStatus(false);
     }
 }
 

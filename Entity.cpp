@@ -3,7 +3,7 @@
 #include "ColliderComponent.h"
 
 Entity::Entity(Level* _level, const string& _name, const Vector2f& _shapeSize, 
-	const ColliderType& _colliderType, const function<bool(Entity* _entity)>& _callback)
+	const ColliderType& _colliderType, const function<void(Entity* _entity)>& _callback)
 {
 	level = _level;
 	shapeSize = _shapeSize;

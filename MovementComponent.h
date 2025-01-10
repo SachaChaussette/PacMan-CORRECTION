@@ -19,7 +19,8 @@ public:
 public:
 	MovementComponent(Entity* _owner);
 
-
+protected:
+	void Move();
 public:
 	virtual void Update() override;
 };
