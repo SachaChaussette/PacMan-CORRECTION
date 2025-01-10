@@ -20,7 +20,7 @@ Level::~Level()
     delete vulnerableTimer;
     while (!entities.empty())
     {
-        entities.pop_back();
+        entities.erase(entities.begin());
     }
 }
 
@@ -71,19 +71,19 @@ void Level::SpawnEntity(const char _symbol, const Vector2f& _shapeSize, const Ve
     {
         {'#', [&]()
             {
-                return new Entity(this, "Walls/Wall", _shapeSize, CT_BLOCK);
+                return new Entity(this, "Walls/Wall", _shapeSize, ET_WALL, true);
             }
         },
         {'.', [&]()
             {
-                Food* _eatable = new Food(this, "Foods/Point", _shapeSize, 10,FT_EATABLE);
+                Food* _eatable = new Food(this, "Foods/Point", _shapeSize, 10,ET_EATABLE);
                 eatables.insert(_eatable);
                 return _eatable;
             }
         },
         {'*', [&]()
             {
-                return new Food(this, "Foods/Apple", _shapeSize, 700, FT_APPLE);
+                return new Food(this, "Foods/Apple", _shapeSize, 700, ET_APPLE);
             }
         },
         {'C', [&]()
@@ -104,7 +104,7 @@ void Level::SpawnEntity(const char _symbol, const Vector2f& _shapeSize, const Ve
     
     Entity* _entity = _textureDataBase[_symbol]();
     _entity->SetPosition(_position);
-    entities.push_back(_entity);
+    entities.insert(_entity);
 }
 
 void Level::Display() const
@@ -130,6 +130,14 @@ void Level::Update()
     {
         _entity->Update();
     }
+    for (Entity* _entity : entities)
+    {
+        if (_entity->GetIsToRemove())
+        {
+            _entity->Destroy();
+        }
+    }
+   
     Display();
 }
 
@@ -155,9 +163,15 @@ Entity* Level::GetEntityByPosition(const Vector2f& _pos)
     return nullptr;
 }
 
+void Level::RemoveEntity(Entity* _entity)
+{
+    entities.erase(entities.find(_entity));
+}
+
 void Level::RemoveEatable(Food* _eatable)
 {
     eatables.erase(eatables.find(_eatable));
+
     if (IsOver())
     {
         Game::GetInstance().Stop();

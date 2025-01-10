@@ -8,9 +8,10 @@ class GhostMovementComponent : public MovementComponent
 	Vector2u targetPos;
 	Vector2u nextPos;
 	Vector2u currentPos;
+
 public:
 	GhostMovementComponent(Entity* _owner);
-public:
+private:
 	bool RetrieveNextPos();
 	bool TryGetNextPos();
 	void SetPath();

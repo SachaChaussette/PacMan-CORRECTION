@@ -15,7 +15,12 @@ public:
 	{
 		canMove = !canMove;
 	}
-	
+	inline void SetDirection(const Vector2i& _newDirection)
+	{
+		if (!canMove) return;
+
+		direction = _newDirection;
+	}
 public:
 	MovementComponent(Entity* _owner);
 

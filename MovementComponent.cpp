@@ -25,9 +25,16 @@ void MovementComponent::Move()
 	const Vector2f& _destination = _shape.getPosition() + Vector2f(_x, _y);
 	Entity* _entity = owner->GetLevel()->CheckCollider(_destination);
 
-	const bool _isGhost = dynamic_cast<Ghost*>(_entity);
+	if(_entity)
+	{
+		owner->GetCollider()->Collide(_entity);
+		if(!_entity->GetIsToRemove())
+		{
+			_entity->GetCollider()->Collide(owner);
+		}
+	}
 
-	if (!_entity || _entity->GetCollider()->Collide(owner) && !_isGhost)
+	if (!_entity || _entity->GetIsToRemove() || !_entity->GetCollider()->GetIsBlocking())
 	{
 		_shape.setPosition(_destination);
 	}

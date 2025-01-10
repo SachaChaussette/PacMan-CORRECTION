@@ -24,13 +24,20 @@ public:
 	{
 		isVulnerable = _status;
 	}
+	inline bool GetIsVulnerable()
+	{
+		return isVulnerable;
+	}
 
 public:
 	Ghost(Level* _level, const Vector2f& _shapeSize);
 	~Ghost();
-public:
-	virtual void Update() override;
-	virtual bool Eat(Entity* _entity) override;
+private:
 	void SetupInputs();
+	void EatPacMan(Entity* _entity);
+public:
+
+	virtual void Update() override;
+	virtual void Destroy() override;
 };
 

@@ -53,7 +53,7 @@ class Level
 {
 	string name;
 	string prefixPath;
-	vector<Entity*> entities;
+	set<Entity*> entities;
 	set<Food*> eatables;
 	set<Ghost*> ghosts;
 	Vector2u mapSize;
@@ -93,6 +93,7 @@ public:
 	void Update();
 	Entity* CheckCollider(const Vector2f& _tagetPosition);
 	Entity* GetEntityByPosition(const Vector2f& _pos);
+	void RemoveEntity(Entity* _entity);
 	void RemoveEatable(Food* _eatable);
 	void ActiveVulnerableEvent();
 	void Respawn(Entity* _entity);

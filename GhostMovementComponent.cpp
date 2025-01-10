@@ -1,6 +1,7 @@
 #include "GhostMovementComponent.h"
 #include "AstarAlgo.h"
 #include "Ghost.h"
+#include "Macro.h"
 
 
 GhostMovementComponent::GhostMovementComponent(Entity* _owner) : MovementComponent(_owner)
@@ -58,7 +59,23 @@ void GhostMovementComponent::ResetPath()
 
 void GhostMovementComponent::ComputeNewDirection()
 {
-	if (currentPos.x - nextPos.x < 0)
+	const vector<Vector2i>& _allDirections =
+	{
+		Vector2i(-1, 0),
+		Vector2i(1, 0),
+		Vector2i(0, -1),
+		Vector2i(0, 1),
+	};
+
+	Vector2i _newDirection;
+	do
+	{
+		_newDirection = GetRandomNumberInRange<Vector2i>(_allDirections);
+	} while (_newDirection != direction /*&& _newDirection != direction * -1*/);
+	direction = _newDirection;
+
+
+	/*if (currentPos.x - nextPos.x < 0)
 	{
 		direction = Vector2i(1, 0);
 	}
@@ -77,12 +94,12 @@ void GhostMovementComponent::ComputeNewDirection()
 	else if(currentPos.x - nextPos.x == 0 && currentPos.y - nextPos.y == 0)
 	{
 		direction = Vector2i(0, 0);
-	}
+	}*/
 }
 
 void GhostMovementComponent::Update()
 {
-	canMove = true;
+	/*canMove = true;
 
 	targetPos = Vector2u(owner->GetLevel()->GetPacMan()->GetPosition().x, owner->GetLevel()->GetPacMan()->GetPosition().y);
 	SetPath();
@@ -91,5 +108,5 @@ void GhostMovementComponent::Update()
 		ComputeNewDirection();
 		__super::Update();
 	}
-	ResetPath();
+	ResetPath();*/
 }

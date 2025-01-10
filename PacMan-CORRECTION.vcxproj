@@ -170,6 +170,7 @@ xcopy /y /d "..\SFML-3.0.0\bin\sfml-window-d-3.dll" "$(OutDir)"
     <ClInclude Include="ColliderComponent.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="Entity.h" />
+    <ClInclude Include="EntityType.h" />
     <ClInclude Include="FileLoader.h" />
     <ClInclude Include="Food.h" />
     <ClInclude Include="Game.h" />

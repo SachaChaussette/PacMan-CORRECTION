@@ -1,32 +1,34 @@
 #pragma once
 
 #include "Component.h"
+#include "EntityType.h"
 
+// TODO REMOVE
 enum ColliderType
 {
 	CT_NONE,
 	CT_OVERLAP,
 	CT_BLOCK,
+
+	CT_COUNT,
 };
 
 class ColliderComponent : public Component
 {
-	ColliderType type;
-	function<void(Entity* _entity)> callback;
+	bool isBlocking;
+	map<EntityType, function<void(Entity* _entity)>> callbacks;
 
 public:
-	inline void SetType(const ColliderType& _type)
+
+	inline bool GetIsBlocking()
 	{
-		type = _type;
-	}
-	inline ColliderType GetType()
-	{
-		return type;
+		return isBlocking;
 	}
 public:
-	ColliderComponent(const function<void(Entity* _entity)>& _callback, const ColliderType& _type, Entity* _owner);
+	ColliderComponent(Entity* _owner, const bool _isBlocking = false);
 
 public:
-	bool Collide(Entity* _entity);
+	void Collide(Entity* _entity);
+	void AddCallback(const EntityType& _type, const function<void(Entity* _entity)>& _callback);
 };
 

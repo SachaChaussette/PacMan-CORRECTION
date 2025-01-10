@@ -1,16 +1,22 @@
 #include "ColliderComponent.h"
+#include "Entity.h"
 
-ColliderComponent::ColliderComponent(const function<void(Entity* _entity)>& _callback, const ColliderType& _type, Entity* _owner) : Component(_owner)
+ColliderComponent::ColliderComponent(Entity* _owner, const bool _isBlocking) : Component(_owner)
 {
-	type = _type;
-	callback = _callback;
+	isBlocking = _isBlocking;
+	callbacks = map<EntityType, function<void(Entity* _entity)>>();
 }
 
-bool ColliderComponent::Collide(Entity* _entity)
+void ColliderComponent::Collide(Entity* _entity)
 {
-	if (type == CT_OVERLAP)
+	const EntityType& _type = _entity->GetType();
+	if(callbacks.contains(_type) && callbacks[_type])
 	{
-		callback(_entity);
+		callbacks[_type](_entity);
 	}
-	return type != CT_BLOCK;
+}
+
+void ColliderComponent::AddCallback(const EntityType& _type, const function<void(Entity* _entity)>& _callback)
+{
+	callbacks.insert(make_pair(_type, _callback));
 }

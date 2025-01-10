@@ -32,6 +32,10 @@ public:
 
 private: 
 	void SetupInputs();
+	void EatGhost(Entity* _entity);
+	void EatEatable(Entity* _entity);
+	void EatApple(Entity* _entity);
+	void RetrieveScore(Food* _food);
 public:
 	virtual void Update() override;
 	void Death();

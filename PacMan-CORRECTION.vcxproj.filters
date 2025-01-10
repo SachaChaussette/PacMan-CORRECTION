@@ -221,5 +221,8 @@
     <ClInclude Include="AnimationComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
+    <ClInclude Include="EntityType.h">
+      <Filter>Entities\Entity</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

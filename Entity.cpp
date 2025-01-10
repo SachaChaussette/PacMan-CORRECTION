@@ -3,8 +3,9 @@
 #include "ColliderComponent.h"
 
 Entity::Entity(Level* _level, const string& _name, const Vector2f& _shapeSize, 
-	const ColliderType& _colliderType, const function<void(Entity* _entity)>& _callback)
+	 const EntityType& _type, const bool _isBlocking)
 {
+	isToRemove = false;
 	level = _level;
 	shapeSize = _shapeSize;
 	shape = new RectangleShape(_shapeSize);
@@ -12,7 +13,7 @@ Entity::Entity(Level* _level, const string& _name, const Vector2f& _shapeSize,
 	TextureManager::GetInstance().InitShape(*shape, texture, _name);
 	spriteIndex = 0;
 
-	collider = new ColliderComponent(_callback, _colliderType, this);
+	collider = new ColliderComponent(this, _isBlocking);
 }
 
 Entity::~Entity()
@@ -24,4 +25,10 @@ Entity::~Entity()
 void Entity::Update()
 {
 	collider->Update();
+}
+
+void Entity::Destroy()
+{
+	level->RemoveEntity(this);
+	delete this;
 }

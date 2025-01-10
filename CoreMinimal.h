@@ -1,8 +1,6 @@
 #pragma once
 
-#include <iostream>
 #include <fstream>
-#include <vector>
 #include <string>
 #include <map>
 #include <queue>
@@ -12,7 +10,6 @@
 #include <math.h>
 #include "Macro.h"
 
-using namespace std;
 using namespace sf;
 
 typedef unsigned int u_int;
@@ -23,3 +20,5 @@ typedef unsigned int u_int;
 #define MAP_SIZE_Y 12
 #define TILE_SIZE_X 20
 #define TILE_SIZE_Y 20
+#define DISPLAY(_text, _endl) cout << _text; \
+								if(_endl) cout << endl;

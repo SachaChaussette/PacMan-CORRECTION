@@ -2,32 +2,30 @@
 #include "PacMan.h"
 #include "Game.h"
 
-Food::Food(Level* _level, const string& _path, const Vector2f& _shapeSize, const int _points
-	, const FoodType& _type) : Entity(_level, _path, _shapeSize, CT_OVERLAP, [&](Entity* _entity) { Eat(_entity); })
+Food::Food(Level* _level, const string& _path, const Vector2f& _shapeSize, const int _points, const EntityType& _type)
+	: Entity(_level, _path, _shapeSize, _type)
 {
-	type = _type;
 	points = _points;
+	collider->AddCallback(ET_PACMAN, [&](Entity* _entity) { Death(_entity); });
 }
 
-bool Food::Eat(Entity* _entity)
+void Food::Death(Entity* _entity)
 {
-	if (PacMan* _pacMan = dynamic_cast<PacMan*>(_entity))
+	Destroy();
+}
+
+void Food::Destroy()
+{
+	if (type = ET_EATABLE)
 	{
-		if(type == FT_EATABLE)
-		{
-			level->RemoveEatable(this);
-		}
-
-		else if(type == FT_APPLE)
-		{
-			level->ActiveVulnerableEvent();
-		}
-
-		type = FT_COUNT;
-		shape->setScale(Vector2f());
-		collider->SetType(CT_NONE);
-		Game::GetInstance().AddScore(points);
+		level->RemoveEatable(this);
 	}
-	return true;
+	else if (type = ET_APPLE)
+	{
+		level->ActiveVulnerableEvent();
+		level->RemoveEntity(this);
+	}
+	__super::Destroy();
+	
 }
 

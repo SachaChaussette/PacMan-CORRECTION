@@ -2,18 +2,22 @@
 
 #include "Object.h"
 #include "Level.h"
+#include "EntityType.h"
 
 enum ColliderType;
 class ColliderComponent;
 
 class Level;
 
+
+
 class Entity : public Object
 {
 	Vector2f shapeSize;
-
+	bool isToRemove;
 
 protected:
+	EntityType type;
 	ColliderComponent* collider;
 	Texture texture;
 	u_int spriteIndex;
@@ -21,6 +25,14 @@ protected:
 	Level* level;
 
 public:
+	inline void AddToRemove()
+	{
+		isToRemove = true;
+	}
+	inline bool GetIsToRemove() const
+	{
+		return isToRemove;
+	}
 	inline Level* GetLevel() const
 	{
 		return level;
@@ -47,11 +59,16 @@ public:
 	{
 		return collider;
 	}
+	inline EntityType GetType() const
+	{
+		return type;
+	}
 public:
 	Entity(Level* _level, const string& _name, const Vector2f& _shapeSize, 
-			const ColliderType& _colliderType, const function<void(Entity* _entity)>& _callback = {});
+		const EntityType& _type, const bool _isBlocking = false);
 	~Entity();
 public:
 	virtual void Update() override;
+	virtual void Destroy();
 };
 
